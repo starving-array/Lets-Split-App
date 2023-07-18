@@ -8,43 +8,91 @@
     <link rel="stylesheet" href="./form.css" />
     <link rel="stylesheet" href="./mediaScreen.css" />
     <link rel="stylesheet" href="./result.css" />
+    <link rel="stylesheet" href="./navbar.css" />
+    <link rel="stylesheet" href="./footer.css" />
   </head>
   <body>
     <div id="formView">
-      <div class="topBarForm">
-        <div class="spanTitle">Contribution Form</div>
-        <div id="closeForm">X</div>
-      </div>
-
-      <div id="formViewMain"></div>
+    
     </div>
     <div id="body">
-      <h1>Hello World!</h1>
+      <div class="navbar">
+        <div>
+          <a href="./about.html">How To Use?</a>
+        </div>
+      </div>
       <div id="inputForm">
-        <label for="noOfPeople">Enter no of People</label>
+        <label for="noOfPeople">Enter Group Details: </label>
 
-        <input type="text" id="noOfPeople" placeholder="enter no of people" />
+        <input type="text" id="noOfPeople" placeholder="No of people?" />
 
-        <button id="clickButton">Click</button>
+        <button id="clickButton">Proceed</button>
       </div>
 
       <!-- <div id="outDiv"></div> -->
-      <div id="outDiv">
-        <div>
-          <span>asis</span>
-          <div></div>
+      <!-- <div id="outDiv">
+        <div id="resultTitle">
+            <span>Result </span>
         </div>
-        <div>
-          <span>sangeeta</span>
-          <div></div>
+        <div id="result">
+          <div class="mainDivResult">
+            <span class="spanTxtFromName">ashish</span
+            ><span class="personToPayList"></span>
+          </div>
+          <div class="mainDivResult">
+            <span class="spanTxtFromName">sangeeta</span
+            ><span class="personToPayList"></span>
+          </div>
+          <div class="mainDivResult">
+            <span class="spanTxtFromName">susu</span
+            ><span class="personToPayList">
+              <div class="perpersonNameToPay">
+                <span class="spanTxtResultName">sangeeta</span
+                ><span class="spanTxtResultPrice">5</span>
+              </div>
+              <div class="perpersonNameToPay">
+                <span class="spanTxtResultName">sangeeta</span
+                ><span class="spanTxtResultPrice">5</span>
+              </div>
+            </span>
+          </div>
+          <div class="mainDivResult">
+            <span class="spanTxtFromName">archie</span
+            ><span class="personToPayList"
+              ><div class="perpersonNameToPay">
+                <span class="spanTxtResultName">ashish</span
+                ><span class="spanTxtResultPrice">15</span>
+              </div></span
+            >
+          </div>
         </div>
-        <div>
-          <span>susu</span>
-          <div><span>sangeeta</span><span>5</span></div>
-        </div>
-        <div>
-          <span>archie</span>
-          <div><span>asis</span><span>15</span></div>
+      </div> -->
+
+      <div class="footer">
+        <div id="contactIn">
+          <div id="linkdin">
+            <a
+              href="https://archishman-das-portfolio.netlify.app/"
+              target="_blank"
+            >
+              <img src="./imgs/copyright.png" alt="" />
+            </a>
+            <a href="https://www.linkedin.com/in/archeese/" target="_blank">
+              <img src="./imgs/linkedin.png" alt="" />
+            </a>
+
+            <a href="https://www.instagram.com/starving_array/" target="_blank">
+              <img src="./imgs/instagram.png" alt="" />
+            </a>
+
+            <a href="https://wa.me/8016166683" target="_blank">
+              <img src="./imgs/whatsapp.png" alt="" />
+            </a>
+
+            <a href="https://github.com/starving-array" target="_blank">
+              <img src="./imgs/github.png" alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

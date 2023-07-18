@@ -7,8 +7,49 @@
   padding: 40px 0px;
 }
 
-.addPriceExtra:hover{
-    background-color: white;
+.addPriceExtra:hover {
+  background-color: white;
 }
 
+#inputForm {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#noOfPeople {
+  width: fit-content;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border-color: teal;
+}
+
+#inputForm label {
+  color: teal;
+  font-size: 1.3rem;
+}
+
+#inputForm > :nth-child(n) {
+  margin: 10px;
+  min-height: 20px;
+  padding: 5px;
+}
+
+#clickButton {
+  width: 100px;
+  background-color: teal;
+  padding: 15px 20px;
+  border: 1px solid teal;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#clickButton:hover {
+  background-color: white;
+  font-style: italic;
+  color: teal;
+}
 

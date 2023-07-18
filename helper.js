@@ -149,20 +149,20 @@ export function formPopUp(inputNoOfPeopleCount) {
   return form;
 }
 
-function inputElementWithClass(element, classNametxt) {
+export function inputElementWithClass(element, classNametxt) {
   let buttonDiv = createEl(element);
   setAt(buttonDiv, "class", classNametxt);
   return buttonDiv;
 }
 
-function inputButton(className, innterTxt) {
+export function inputButton(className, innterTxt) {
   let button = createEl("button");
   setAt(button, "class", className);
   button.innerText = innterTxt;
   return button;
 }
 
-function inputNameInForm(i) {
+export function inputNameInForm(i) {
   let inputEl = createEl("input");
   setAt(inputEl, "id", i + "idno");
   setAt(inputEl, "placeHolder", "Please enter name?");
@@ -171,7 +171,7 @@ function inputNameInForm(i) {
   return inputEl;
 }
 
-function inputPriceElement(id, placeHolderText) {
+export function inputPriceElement(id, placeHolderText) {
   let input2 = createEl("input");
   setAt(input2, "id", id);
   setAt(input2, "placeHolder", placeHolderText);
@@ -180,7 +180,7 @@ function inputPriceElement(id, placeHolderText) {
   return input2;
 }
 
-function inputLavel(forName, classNameTxt, innterTxt) {
+export function inputLavel(forName, classNameTxt, innterTxt) {
   let label = createEl("label");
   setAt(label, "for", forName);
   setAt(label, "class", classNameTxt);
@@ -188,34 +188,42 @@ function inputLavel(forName, classNameTxt, innterTxt) {
   return label;
 }
 
-function setAt(el, att, val) {
+export function setAt(el, att, val) {
   el.setAttribute(att, val);
 }
 
-function createEl(el) {
+export function createEl(el) {
   return document.createElement(el);
 }
 
 export function outputResult(whoPays) {
   // output
   let OutDiv = document.getElementById("outDiv");
+
+  let resultTitle = inputElementWithClass
   for (let key in whoPays) {
     // create element for result
-    let mainDiv = createEl("div");
+    let mainDiv = inputElementWithClass("div", "mainDivResult");
 
-    let name = createEl("span");
+    let name = inputElementWithClass("span", "spanTxtFromName");
     name.innerText = key;
     let arrayToPay = whoPays[key];
 
-    let insideDiv = createEl("div");
+    let insideDiv = inputElementWithClass("div", "personToPayList");
     arrayToPay.forEach((el) => {
-      let pname = createEl("span");
+      let perPersonDiv = inputElementWithClass("div", "perpersonNameToPay");
+
+      let pname = inputElementWithClass("span", "spanTxtResultName");
       pname.innerText = el[0];
-      let pprice = createEl("span");
-      pprice.innerText = el[1];
-      insideDiv.append(pname, pprice);
+      let pprice = inputElementWithClass("span", "spanTxtResultPrice");
+      pprice.innerText = Math.ceil(el[1]);
+
+      perPersonDiv.append(pname, pprice);
+
+      insideDiv.append(perPersonDiv);
     });
     mainDiv.append(name, insideDiv);
+
     OutDiv.append(mainDiv);
   }
 }
