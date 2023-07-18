@@ -1,3 +1,10 @@
+#midBodyEl{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .divLavel {
   margin-bottom: 20px;
   padding: 5px;

@@ -112,3 +112,6 @@ if (welcomePageStat) {
 }
 // how to use
 //
+
+document.getElementById("midBodyEl").style.height =
+  window.innerHeight - 80 + "px";
