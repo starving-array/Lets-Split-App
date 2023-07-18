@@ -1,0 +1,14 @@
+.divLavel {
+  margin-bottom: 20px;
+  padding: 5px;
+}
+#form {
+  position: relative;
+  padding: 40px 0px;
+}
+
+.addPriceExtra:hover{
+    background-color: white;
+}
+
+

@@ -4,159 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bill Split</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./form.css" />
+    <link rel="stylesheet" href="./mediaScreen.css" />
+    <link rel="stylesheet" href="./result.css" />
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <label for="noOfPeople">Enter no of People</label>
+    <div id="formView">
+      <div class="topBarForm">
+        <div class="spanTitle">Contribution Form</div>
+        <div id="closeForm">X</div>
+      </div>
 
-    <input type="text" id="noOfPeople" placeholder="enter no of people" />
+      <div id="formViewMain"></div>
+    </div>
+    <div id="body">
+      <h1>Hello World!</h1>
+      <div id="inputForm">
+        <label for="noOfPeople">Enter no of People</label>
 
-    <button id="clickButton">Click</button>
+        <input type="text" id="noOfPeople" placeholder="enter no of people" />
 
-    <div id="main"></div>
+        <button id="clickButton">Click</button>
+      </div>
+
+      <!-- <div id="outDiv"></div> -->
+      <div id="outDiv">
+        <div>
+          <span>asis</span>
+          <div></div>
+        </div>
+        <div>
+          <span>sangeeta</span>
+          <div></div>
+        </div>
+        <div>
+          <span>susu</span>
+          <div><span>sangeeta</span><span>5</span></div>
+        </div>
+        <div>
+          <span>archie</span>
+          <div><span>asis</span><span>15</span></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 
-<script>
-  let buttonId = document.getElementById("clickButton");
-  buttonId.addEventListener("click", () => {
-    let inputNoOfPeople = document.getElementById("noOfPeople");
-    inputNoOfPeopleCount = Number(inputNoOfPeople.value);
-
-    console.log("Working log", inputNoOfPeopleCount);
-    if (inputNoOfPeopleCount == NaN || inputNoOfPeopleCount == 0) {
-      // enter a valid no
-      alert("Invalid Input");
-    } else if (inputNoOfPeople < 0) {
-      // enter a valid positive no
-      alert("No of people can't be negetive");
-    } else {
-      // procedd with form
-      // create a form to get names and amount paid
-      console.log("Enter in form section");
-      let form = createEl("form");
-      setAt(form, "id", "form");
-
-      for (let i = 0; i < inputNoOfPeopleCount; i++) {
-        // create label
-        let label = createEl("label");
-        setAt(label, "for", "idDiv" + i);
-        label.innerText = "Name " + (i + 1);
-        // create input button
-        let div = createEl("div");
-        setAt(div, "id", "idDiv" + i);
-        setAt(div, "class", "personDetails");
-
-        // name
-        let input = createEl("input");
-        setAt(input, "id", i + "idno");
-        setAt(input, "placeHolder", "Please enter name?");
-
-        // price
-        // multiple price
-        let priceDiv = createEl("div");
-        let input2 = priceElement(i + "idnoP");
-        priceDiv.append(input2);
-        // create ++ to add multiple addition
-        let button = createEl("div");
-        button.innerText = "+";
-        button.addEventListener("click", () => {
-          // create a input box and append it to price div
-          let el = priceElement(i + 1 + "extraIdnoP");
-          priceDiv.append(el);
-        });
-
-        div.append(input, priceDiv, button);
-        form.append(label, div);
-      }
-      let submit = createEl("button");
-      setAt(submit, "type", "submit");
-      submit.innerText = "Proceed";
-
-      form.append(submit);
-      document.getElementById("main").append(form);
-      startCalculation();
-    }
-  });
-
-  function priceElement(id) {
-    let input2 = createEl("input");
-    setAt(input2, "id", id);
-    setAt(input2, "placeHolder", "Please enter Price?");
-    return input2;
-  }
-
-  function setAt(el, att, val) {
-    el.setAttribute(att, val);
-  }
-
-  function createEl(el) {
-    return document.createElement(el);
-  }
-
-  // start calculation
-  // once proceed clicked
-  // start getting data
-  function startCalculation() {
-    document.getElementById("form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      let obj = {};
-      let total = 0;
-      let noOfPeople = 0;
-      document.querySelectorAll(".personDetails").forEach((el) => {
-        let name = el.childNodes[0].value;
-        let priceListCount = el.childNodes[1].childElementCount;
-        let sum = 0;
-        for (let i = 0; i < priceListCount; i++) {
-          // check if value is invalid
-          sum += Number(el.childNodes[1].childNodes[i].value);
-        }
-
-        obj[name] = sum;
-        total = total + sum;
-        noOfPeople++;
-      });
-
-      let perPersonPay = total / noOfPeople;
-
-      const sortable = Object.fromEntries(
-        Object.entries(obj).sort(([, a], [, b]) => b - a)
-      );
-
-      let whoPays = {};
-
-      for (let key in sortable) {
-        whoPays[key] = [];
-        let paid = sortable[key];
-        let extraPaid = paid - perPersonPay;
-        if (extraPaid > 0) {
-          for (let key2 in sortable) {
-            if (key != key2) {
-              let paidIn = sortable[key2];
-              if (paidIn < perPersonPay) {
-                let extraToBePaid = perPersonPay - paidIn;
-                if (extraPaid == extraToBePaid) {
-                  sortable[key] = perPersonPay;
-                  sortable[key2] = perPersonPay;
-                  whoPays[key].push([key2, perPersonPay]);
-                  break;
-                } else if (extraPaid > extraToBePaid) {
-                  extraPaid = extraPaid - extraToBePaid;
-                  sortable[key] = extraPaid;
-                  sortable[key2] = perPersonPay;
-                  whoPays[key].push([key2, extraToBePaid]);
-                } else {
-                  sortable[key2] = paidIn - extraPaid;
-                  sortable[key] = perPersonPay;
-                  whoPays[key].push([key2, extraPaid]);
-                  break;
-                }
-              }
-            }
-          }
-        }
-      }
-      console.log(whoPays);
-    });
-  }
-</script>
+<script type="module" src="./index.js"></script>
