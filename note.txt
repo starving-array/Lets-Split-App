@@ -1,0 +1,5 @@
+NextUpdate
+1. How to Use link in Welcome page 
+2. For same name in the input entry create an copy with prefix 
+3. Log report in local storage and deletable
+4. Report Structure change to more detail - money spend by user and the existing 
